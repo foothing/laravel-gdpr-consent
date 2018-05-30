@@ -1,0 +1,29 @@
+{
+    "name": "foothing/laravel-gdpr-consent",
+    "description": "Light-weight package for gdpr consent records.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "brazorf",
+            "email": "fabrizio.ranieri@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+		"illuminate/support": "~5.0",
+		"illuminate/database": "~5.0",
+        "foothing/laravel-repository": "^0.9.0"
+	},
+	"require-dev": {
+		"orchestra/testbench": "~3.0",
+		"orchestra/database": "^3.4",
+		"phpunit/phpunit": "^5",
+        "mockery/mockery": "^1.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"Foothing\\Laravel\\Consent\\": "src",
+			"tests\\Foothing\\Laravel\\Consent\\": "tests"
+		}
+	}
+}
