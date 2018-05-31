@@ -1,7 +1,3 @@
-# laravel-gdpr-consent
-Light-weight package for keeping track of consent events.
-Work in progress - due soon.
-=======
 # Laravel GDPR Consent
 
 Light-weight Laravel 5 package
