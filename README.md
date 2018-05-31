@@ -7,6 +7,42 @@ Work in progress - due soon.
 Light-weight Laravel 5 package
 for user's consents and data processing records.
 
+## Install
+
+Via composer
+
+`composer require foothing/laravel-gdpr-consent`
+
+Add service provider in `config/app.php`
+```php
+'providers' => [
+	// omitted
+
+	Foothing\Laravel\Consent\ConsentServiceProvider::class
+]
+```
+
+Add alias in `config/app.php` if you want to use the facade
+```php
+'aliases' => [
+	// omitted
+
+	'Consent' => Foothing\Laravel\Consent\Facades\Consent::class
+]
+```
+
+Publish config and migrations
+
+`php artisan vendor:publish --tag=config`
+
+`php artisan vendor:publish --tag=migrations`
+
+Configure as needed, then run the migration
+`php artisan migrate`
+
+Setup the treatments table
+`php artisan consent`
+
 ## Quick start
 
 First you need to configure which `treatments` are required by your site.
@@ -189,28 +225,13 @@ $event = new Event([
 	// The subject id.
 	'subject_id' => $user->id,
 
-	// IP address.
-    'ip' => $ip,
-
 	// A string describing what has been done with subject's data.
 	'action' => $action,
 
 	// Optional, consent record id.
 	'consent_id' => $consentId,
-
-	// Request payload, i.e. http post data.
-	'payload' => $payload
 ]);
 Consent::log($event);
-
-// Alternative api
-Consent::log(
-	$subjectId,
-	$ipAddress,
-	$action,
-	$consentId,
-	$payload
-);
 
 // Retrieving subject's logs
 Consent::events($subject);
