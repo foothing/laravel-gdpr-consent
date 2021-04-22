@@ -46,9 +46,9 @@ class ConsentApi {
                 $consent = new Consent();
                 $consent->subject_id = $subject->getSubjectId();
                 $consent->treatment_id = $treatment->id;
+				$consent->save();
             }
-
-            $consent->save();
+            
             $consents[] = $consent;
 
             $event = new Event([
@@ -107,19 +107,14 @@ class ConsentApi {
         return $event;
     }
 
-    public function updateConsents(array $treatments, ConsentSubject $subject) {
-
-    }
-
-protected function removeMeConfig($key) {
-    return false;
-}
-
-    public function revokeConsent(Consent $consent) {
-        $consent->action = 'revoke';
-        $consent->save();
-
-        return $consent;
+    /**
+     * @TODO Placeholder.
+     *
+     * @param $key
+     * @return bool
+     */
+    protected function removeMeConfig($key) {
+        return false;
     }
 
     public function erase(ConsentSubject $subject) {
