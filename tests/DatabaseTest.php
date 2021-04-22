@@ -30,6 +30,7 @@ class DatabaseTest extends \Orchestra\Testbench\TestCase {
 
         $this->artisan('migrate');
 
+        $this->loadMigrationsFrom(__DIR__ . '/../migrations');
         $this->loadMigrationsFrom(__DIR__ . '/migrations');
     }
 
