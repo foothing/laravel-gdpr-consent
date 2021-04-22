@@ -10,7 +10,7 @@ class Event extends Model
 
     protected $table = 'gdpr_event';
 
-    public $fillable = ['id', 'action', 'consent_id', 'subject_id', 'payload'];
+    public $fillable = ['id', 'action', 'treatment_id', 'consent_id', 'subject_id', 'payload'];
 
     public function consent()
     {

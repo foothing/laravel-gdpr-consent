@@ -6,7 +6,6 @@ use Foothing\Laravel\Consent\Exceptions\TreatmentConfigurationException;
 use Foothing\Laravel\Consent\Models\Consent;
 use Foothing\Laravel\Consent\Models\Event;
 use Foothing\Laravel\Consent\Models\Treatment;
-use Foothing\Laravel\Consent\Repositories\ConsentRepository;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Request;
@@ -48,10 +47,11 @@ class ConsentApi {
                 $consent->treatment_id = $treatment->id;
 				$consent->save();
             }
-            
+
             $consents[] = $consent;
 
             $event = new Event([
+                'treatment_id' => $treatment->id,
                 'consent_id' => $consent->id,
                 'subject_id' => $subject->getSubjectid(),
                 'action' => 'consent.grant',
@@ -92,6 +92,7 @@ class ConsentApi {
         }
 
         $event = new Event([
+            'treatment_id' => $treatmentId,
             'consent_id' => null,
             'subject_id' => $subject->getSubjectid(),
             'action' => 'consent.revoke',

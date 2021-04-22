@@ -37,12 +37,18 @@ class GdprConsent extends Migration
 
         Schema::create('gdpr_event', function(Blueprint $table){
             $table->uuid('id')->primary();
+            $table->uuid('treatment_id')->nullable();
             $table->uuid('consent_id')->nullable();
             $table->string('subject_id');
             $table->string('ip');
             $table->string('action');
             $table->text('payload');
             $table->timestamps();
+
+            $table
+                ->foreign('treatment_id')
+                ->references('id')
+                ->on('gdpr_treatment');
 
             $table
                 ->foreign('consent_id')

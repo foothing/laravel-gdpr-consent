@@ -32,6 +32,7 @@ class Fixtures extends Migration
      */
     public function down()
     {
+        \DB::table('gdpr_event')->delete();
         \DB::table('gdpr_consent')->delete();
         \DB::table('gdpr_treatment')->delete();
     }
