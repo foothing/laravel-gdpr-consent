@@ -101,7 +101,7 @@ class ConsentApi {
         {
             $consent->delete();
 
-            $event->save();
+            $this->log($event);
         });
 
         return $event;
